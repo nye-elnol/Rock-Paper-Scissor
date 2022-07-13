@@ -1,65 +1,48 @@
 function computerPlay(){
-  let x = parseInt(Math.random()*10);
-  if (x<3){
-    return 'Rock';
-  }
-  else if (x<6){
-    return 'Paper';
-  }
-  else {
-    return 'Scissor';
-  }
-}
-
-function playRound(playerSelection, computerSelection){
-  let pop = `Sorry! Can't handle ${playerSelection}`;
-  let ps = playerSelection.toLowerCase();
-  let cs = computerSelection;
-  let iPlayer = 0;
-  let iComputer = 0;
-  if (cs === 'Rock' && ps === 'rock'){
-    return 'No winner! Rock can\'t beat a rock';
-  }
-  else if (cs === 'Rock' && ps === 'paper'){
-    iPlayer++;
-    return 'You win! Paper beats rock!';
-  }
-  else if (cs === 'Rock' && ps === 'scissor'){
-    iComputer++;
-    return 'You lose! Rock beats scissor!';
-  }
-  else if (cs === 'Paper' && ps === 'rock'){
-    iComputer++;
-    return 'You lose! Paper beats a rock!';
-  }
-  else if (cs === 'Paper' && ps === 'paper'){
-    return 'Now winner! Paper can not beat a paper!';
-  }
-  else if (cs === 'Paper' && ps === 'scissor'){
-    iPlayer++;
-    return 'You win! Scissor beats a paper!';
-  }
-  else if (cs === 'Scissor' && ps === 'rock'){
-    iPlayer++;
-    return 'You win! Rock beats a scissor!';
-  }
-  else if (cs === 'Scissor' && ps === 'paper'){
-    iComputer++;
-    return 'You lose! Scissor beats a paper!';
-  } 
-  else if (cs === 'Scissor' && ps === 'scissor'){
-    return 'No winner! Scissor can\'t beat scissor!';
-  }
-  else {
-    return pop;
+  let x =  parseInt(Math.random()*3);
+  switch(x){
+    case 0:
+      return 'Rock';
+    case 1:
+      return 'Scissor';
+    case 2:
+      return 'Paper';
   }
 }
 
 function game(){
-  let x;
-  for (let i=0;i<5;i++){
-    x = prompt('Enter Your Value: ');
-    playRound(x, computerPlay());
+  let iComputer = 0;
+  let iPlayer = 0;
+  let rUser;
+  let er = 'Can\'t Handle The Input!';
+
+  for (let i = 0; i<5;i++){
+    computerPlay();
+    rUser = prompt('Rock or Paper or Scissor? ').toLowerCase();
+    if ((rUser==='paper'&&computerPlay()==='Rock')||(rUser==='rock'&&computerPlay()==='Scissor')||rUser==='scissor'&&computerPlay()==='Paper'){
+      ++iPlayer;
+    }
+    else if((rUser==='paper'&&computerPlay()==='Scissor')||(rUser==='rock'&&computerPlay()==='Paper')||(rUser==='scissor'&&computerPlay()==='Rock')){
+      ++iComputer;
+    }
+    
+  }
+
+  if (iComputer>iPlayer){
+    return `You lost! The computer had ${iComputer} points, and you had ${iPlayer}`;
+  }
+  else if (iComputer<iPlayer){
+    return `You won! You had ${iPlayer} points, and the computer had ${iComputer}`;
+  }
+  else {
+    return 'No winner!';
   }
 }
-console.log(game())
+console.log(game());
+/*
+  Round nb 0 is done! You got 0 points and the computer got 0 points Here, were equality
+  Round nb 1 is done! You got 1 points and the computer got 0 points here I won
+  Round nb 2 is done! You got 1 points and the computer got 1 points here the computer won
+  Round nb 3 is done! You got 2 points and the computer got 1 points here i won
+  Round nb 4 is done! You got 2 points and the computer got 1 points here no winner
+*/
