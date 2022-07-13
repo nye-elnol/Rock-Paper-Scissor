@@ -25,7 +25,15 @@ function game(){
     else if((rUser==='paper'&&computerPlay()==='Scissor')||(rUser==='rock'&&computerPlay()==='Paper')||(rUser==='scissor'&&computerPlay()==='Rock')){
       ++iComputer;
     }
-    
+    if (iPlayer>iComputer){
+      console.log('You won this round');
+    }
+    else if (iComputer>iPlayer){
+      console.log('You lost this round');
+    }
+    else {
+      console.log('No winner in this round');
+    }
   }
 
   if (iComputer>iPlayer){
@@ -35,7 +43,7 @@ function game(){
     return `You won! You had ${iPlayer} points, and the computer had ${iComputer}`;
   }
   else {
-    return 'No winner!';
+    return `No winner! You had ${iPlayer} points, and the computer had ${iComputer}`;
   }
 }
 console.log(game());
