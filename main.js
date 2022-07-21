@@ -1,3 +1,7 @@
+/* 
+  This file contains the old version of the program, before adding the UI
+*/
+
 function computerPlay(){
   let x =  parseInt(Math.random()*3);
   switch(x){
