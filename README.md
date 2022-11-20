@@ -1,2 +1,2 @@
 # Rock-Paper-Scissor
-The Foundations' JS first project
+Jeg er meget glad for at have jer her!
